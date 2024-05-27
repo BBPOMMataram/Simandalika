@@ -17,8 +17,14 @@ export default {
         },
     },
 
+    darkMode: 'selector',
+
     plugins: [
         forms,
         require('daisyui')
     ],
+
+    daisyui: {
+        themes: true
+    }
 };
