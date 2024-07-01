@@ -3,22 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware('auth', 'verified')->group(function () {
+// Route::middleware('auth', 'verified')->group(function () {
 
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
 
     
-    Route::get('tamu', function () {
-        return view('tamu');
-    })->name('tamu');
+    // Route::get('tamu', function () {
+    //     return view('tamu');
+    // })->name('tamu');
 
-});
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
