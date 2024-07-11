@@ -23,3 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/dashboard', function(){
+    return view('chart.dashboard');
+});
