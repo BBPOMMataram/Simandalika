@@ -32,21 +32,6 @@
             </a>
         </div>
         <div class="card">
-            <a href="https://asikcuan.bbpommatarm.id" target="_blank">
-                <h2>Asik Cuan</h2>
-                <p>Asik Cuan adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam omnis eligendi
-                    earum numquam saepe nostrum?</p>
-            </a>
-        </div>
-        <div class="card">
-            <a href="https://e-semu.bbpommataram.id" target="_blank">
-                <h2>E Semu</h2>
-                <p>E Semu adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil totam sit atque
-                    temporibus dolor nulla excepturi quisquam necessitatibus tenetur cum nemo perspiciatis officia sunt
-                    nobis culpa, fugiat, aliquid quam optio!</p>
-            </a>
-        </div>
-        <div class="card">
             <a href="https://e-tamu.bbpommataram.id" target="_blank">
                 <h2>E Tamu</h2>
                 <p>E Tamu adalah dolor nulla excepturi quisquam necessitatibus tenetur cum nemo perspiciatis officia
