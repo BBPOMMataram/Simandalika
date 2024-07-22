@@ -8,13 +8,15 @@
      <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
      <!-- CSS -->
     <link rel="stylesheet" href="/css.css">
-    <!-- JS -->
-     <script src="/public/js.js"></script>
 </head>
 <body>
+    
+     <script src="/js.js"></script>
+    
+
       <!-- Sidebar -->
         <section id="sidebar">
-            <img src="/images/IMG/Group 10.png" alt="" class="head" style="width: 120px; margin-top: 20px; margin-left: 60px;">
+            <img src="/images/IMG/Group 10.png" alt="" class="head" style=" cursor: pointer; width: 120px; margin-top: 20px; margin-left: 60px;">
             <ul class="sidebar-menu">
                 <li class="active">
                     <a href="#percepat">
@@ -53,20 +55,7 @@
                     </a>
                 </li>
             </ul>
-            <script>
-                const allSideMenu = document.querySelectorAll('#sidebar .sidebar-menu li a');
-
-                allSideMenu.forEach(item=> {
-                const li = item.parentElement;
-
-                item.addEventListener('click', function () {
-                    allSideMenu.forEach(i=> {
-                        i.parentElement.classList.remove('active');
-                    })
-                    li.classList.add('active');
-                })
-                });
-            </script>
+             
         </section>
       <!-- End Sidebar -->
        <!-- Content -->
@@ -78,15 +67,24 @@
                         <i class='bx bx-bullseye'></i>
                         <span class="text">Dashboard Overview</span>
                     </a>
-                    <img src="/images/IMG/Group 16.png" alt="" width="25px">
-                    <script>
-                        const menuBar = document.querySelector('#content nav .bx.bx-menu');
-                        const sidebar = document.getElementById('sidebar');
-
-                        menuBar.addEventListener('click', function () {
-                            sidebar.classList.toggle('hide');
-                        })
-                    </script>
+                    <img src="/images/IMG/Group 16.png" alt="" width="25px" style="cursor: pointer;" onclick="openpopup()">
+                      <!-- POPUP -->
+                        <div class="popup" id="popup">
+                            <p>Apa Anda Yakin Ingin Logout </p>
+                            <a href="index.html" onclick="closepopup()">Iya</a>
+                            <a href="#" onclick="closepopup()">Tidak</a>
+                        </div>
+                        <script>
+                            const popup = document.getElementById("popup")
+                            function openpopup() {
+                                popup.classList.add("open-popup");   
+                            }
+                            function closepopup() {
+                                popup.classList.remove("open-popup");   
+                            }
+                        </script>
+                      <!-- POPUP -->
+                    
                 </nav>
             <!--END NAV -->
             <!-- MAIN -->
@@ -137,7 +135,7 @@
                             </div>
                             <div class="grafik-item">
                                 <h3>Pengujian</h3>
-                                <canvas id="pengujian"></canvas>
+                                <canvas id="pengujiaan"></canvas>
                             </div>
                         </div>
                     </div>
@@ -183,12 +181,36 @@
                 </section>
                 <section id="kepegawaian">
                     <span class="teks">Kepegawaian</span>
+                    <div class="wrapper">
+                        <div class="pegawaian">
+                        <div class="grafik-item">
+                                <h3>Kepegawaian</h3>
+                                <canvas id="pegawai"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section id="kearsipan">
                     <span class="teks">Kearsipan</span>
+                    <div class="wrapper">
+                        <div class="arsip">
+                        <div class="grafik-item">
+                                <h3>Kearsipan</h3>
+                                <canvas id="arsip"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section id="pengujian">
                     <span class="teks">Pengujian Sampel PK3</span>
+                    <div class="wrapper">
+                        <div class="pengujian">
+                        <div class="grafik-item">
+                                <h3>Pengujian</h3>
+                                <canvas id="ujian"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             <!-- END MAIN -->
         </section>

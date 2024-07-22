@@ -1,4 +1,5 @@
-// For Sidebar
+document.addEventListener('DOMContentLoaded', function() {
+    // For Sidebar
 const allSideMenu = document.querySelectorAll('#sidebar .sidebar-menu li a');
 
 allSideMenu.forEach(item=> {
@@ -19,3 +20,7 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
     sidebar.classList.toggle('hide');
 })
+
+
+});
+
