@@ -328,7 +328,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin: 30px 0;
+    margin: 20px 0;
     float: left;
     gap: 10px;
 }

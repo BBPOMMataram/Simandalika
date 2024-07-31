@@ -220,16 +220,31 @@ document.addEventListener("DOMContentLoaded", function () {
                     plugins: {
                         legend: {
                             position: 'top',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function (tooltipItem) {
-                                    return `${tooltipItem.label}: ${tooltipItem.raw}`;
-                                }
+                            align: 'start',
+                            labels: {
+                                padding: 10,
+                                boxWidth: 12,
+                                padding: 5
                             }
+                        },
+                        datalabels: {
+                            color: '#FCFFFE',
+                            anchor: 'center',
+                            align: 'center',
+                            offset: -10,
+                            font: {
+                                weight: 'regular'
+                            },
+                            formatter: (value) => value
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            bottom: 20
                         }
                     }
-                }
+                },
+                plugins: [ChartDataLabels]
             });
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -241,127 +256,132 @@ document.addEventListener("DOMContentLoaded", function () {
 //     const tahunSelect = document.getElementById('tahun');
 //     const bulanSelect = document.getElementById('bulan');
 //     const ctx = document.getElementById('guestPieChart').getContext('2d');
-    let chart;
+    
+let chart;
 
-    async function fetchGuestData(year, month) {
-        const url = 'https://e-tamu.bbpommataram.id/api/guests?year=' + year;
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.guests;
-    }
+async function fetchGuestData(year, month) {
+    const url = 'https://e-tamu.bbpommataram.id/api/guests?year=' + year;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.guests;
+}
 
-    function processGuestData(guests, monthFilter) {
-        const serviceCounts = {};
+function processGuestData(guests, monthFilter) {
+    const serviceCounts = {};
 
-        guests.forEach(guest => {
-            if (monthFilter && guest.month !== monthFilter) {
-                return;
-            }
-
-            guest.services.forEach(service => {
-                if (serviceCounts[service.service_name]) {
-                    serviceCounts[service.service_name] += service.total;
-                } else {
-                    serviceCounts[service.service_name] = service.total;
-                }
-            });
-        });
-
-        const labels = Object.keys(serviceCounts);
-        const counts = Object.values(serviceCounts);
-
-        return { labels, counts };
-    }
-
-    async function updateChart(year, month) {
-        const guests = await fetchGuestData(year);
-        const { labels, counts } = processGuestData(guests, month);
-
-        if (chart) {
-            chart.destroy();
+    guests.forEach(guest => {
+        if (monthFilter && guest.month !== monthFilter) {
+            return;
         }
 
-        chart = new Chart(document.getElementById('guestPieChart').getContext('2d'), {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Jumlah Pengunjung',
-                    data: counts,
-                    backgroundColor: [
-                        '#D32F2E',
-                        '#FF5F00',
-                        '#FF9F00',
-                        '#9BEC00',
-                        '#059212',
-                        '#006769',
-                        '#0F67B1',
-                        '#850F8D'
-                    ],
-                    borderColor: [
-                       '#D32F2E',
-                        '#FF5F00',
-                        '#FF9F00',
-                        '#9BEC00',
-                        '#059212',
-                        '#006769',
-                        '#0F67B1',
-                        '#850F8D'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        align: 'start',
-                        labels: {
-                            padding: 10,
-                            boxWidth: 12,
-                            padding: 5
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function (tooltipItem) {
-                                const label = tooltipItem.label || '';
-                                const value = tooltipItem.raw;
-                                return `${label}: ${value}`;
-                            }
-                        }
+        guest.services.forEach(service => {
+            if (serviceCounts[service.service_name]) {
+                serviceCounts[service.service_name] += service.total;
+            } else {
+                serviceCounts[service.service_name] = service.total;
+            }
+        });
+    });
+
+    const labels = Object.keys(serviceCounts);
+    const counts = Object.values(serviceCounts);
+
+    return { labels, counts };
+}
+
+async function updateChart(year, month) {
+    const guests = await fetchGuestData(year);
+    const { labels, counts } = processGuestData(guests, month);
+
+    if (chart) {
+        chart.destroy();
+    }
+
+    chart = new Chart(document.getElementById('guestPieChart').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Jumlah Pengunjung',
+                data: counts,
+                backgroundColor: [
+                                        '#D32F2E',
+                                        '#FF5F00',
+                                        '#FF9F00',
+                                        '#9BEC00',
+                                        '#059212',
+                                        '#006769',
+                                        '#0F67B1',
+                                        '#850F8D'
+                                    ],
+                                    borderColor: [
+                                       '#D32F2E',
+                                        '#FF5F00',
+                                        '#FF9F00',
+                                        '#9BEC00',
+                                        '#059212',
+                                        '#006769',
+                                        '#0F67B1',
+                                        '#850F8D'
+                                    ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    align: 'start',
+                    labels: {
+                        padding: 10,
+                        boxWidth: 12,
+                        padding: 5
                     }
                 },
-                layout: {
-                    padding: {
-                        bottom: 60
-                    }
+                datalabels: {
+                    color: '#FCFFFE',
+                    anchor: 'center',
+                    align: 'center',
+                    offset: -10,
+                    font: {
+                        weight: 'regular'
+                    },
+                    formatter: (value) => value
+                }
+            },
+            layout: {
+                padding: {
+                    bottom: 20
                 }
             }
-        });
+        },
+        plugins: [ChartDataLabels]
+    });
+}
+
+function Filtering() {
+    const year = document.getElementById('tahun').value;
+    const month = document.getElementById('bulan').value !== 'Pilih' ? document.getElementById('bulan').value : null;
+    if (year !== 'Pilih') {
+        updateChart(year, month);
     }
+}
 
-    function Filtering() {
-        const year = document.getElementById('tahun').value;
-        const month = document.getElementById('bulan').value !== 'Pilih' ? document.getElementById('bulan').value : null;
-        if (year !== 'Pilih') {
-            updateChart(year, month);
-        }
+function Resetting() {
+    document.getElementById('tahun').value = 'Pilih';
+    document.getElementById('bulan').value = 'Pilih';
+    if (chart) {
+        // chart.destroy();
+        updateChart('2023', '');
     }
+}
 
-    function Resetting() {
-        document.getElementById('tahun').value = 'Pilih';
-        document.getElementById('bulan').value = 'Pilih';
-        if (chart) {
-            // chart.destroy();
-            updateChart('2023', '');
-        }
-    }
+// Inisialisasi chart dengan data default
+updateChart('2023', null);
 
-    // Inisialisasi chart dengan data default
-    updateChart('2023', null);
+// Bind filter buttons
+document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
+document.querySelector('button[onclick="Resetting()"]').addEventListener('click', Resetting);
 
-    // Bind filter buttons
-    document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
-    document.querySelector('button[onclick="Resetting()"]').addEventListener('click', Resetting);
+   
