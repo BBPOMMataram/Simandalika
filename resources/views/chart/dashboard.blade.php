@@ -81,7 +81,6 @@
                       <!-- POPUP -->
                         <div class="popup" id="popup">
                             <a href="#">Edit Profile</a>
-                            <a href="#">Settings</a>
                             <a onclick="openpopup()">Logout</a>
                                 <!-- <div class="overlay" id="overlay">
                                     <p>Apa Anda Yakin Ingin Logout </p>
