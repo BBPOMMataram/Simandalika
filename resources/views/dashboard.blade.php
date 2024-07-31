@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBPOM di Mataram</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+    </head>
 
 <body>
     <header class="header">
@@ -24,7 +24,11 @@
         <p>Informasi terbaru: Aplikasi baru telah ditambahkan! &bull; Dapatkan update terkini seputar teknologi dan
             aplikasi</p>
     </div>
+    <div style="text-align: center; font-size: xx-large; ">
+        <h2>SI MANDALIKA</h2>
+    </div>
     <main class="container">
+        
         <div class="card">
             <a href="https://percepat.bbpommataram.id" target="_blank">
                 <h2>Percepat</h2>

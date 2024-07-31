@@ -8,6 +8,9 @@
      <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
      <!-- CSS -->
     <link rel="stylesheet" href="/css.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     
@@ -83,33 +86,61 @@
                                 popup.classList.remove("open-popup");   
                             }
                         </script>
-                      <!-- POPUP -->
-                    
+                      <!-- POPUP -->-
                 </nav>
             <!--END NAV -->
             <!-- MAIN -->
                 <section id="percepat">
                     <span class="teks">Percepat</span>
+                    
                     <div class="wrapper">
-                        <div class="summary">
                             <div class="summary-item">
-                                <img src="/images/IMG/Group 17.png" alt="stok" class="summary-icon" style="width: 30px; height: 30px;">
-                                <p id="jmlstok">0</p>
-                                <h3>Jumlah Stok</h3>
+                                <i class='bx bxs-data' style="width: 180px; margin-bottom: 10px; color:#D32F2E; "></i>
+                                <div class="wrap">
+                                    <div class="atk">
+                                        <p id="jmlatk">0</p>
+                                        <h3>ATK</h3>
+                                    </div>
+                                    <div class="reagen">
+                                        <p id="jmlreagen">0</p>
+                                        <h3>Reagen</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="summary-item">
-                                <img src="/images/IMG/Group 18.png" alt="stok" class="summary-icon" style="width: 30px; height: 30px;">
-                                <p id="jmlstok">0</p>
-                                <h3>Jumlah Reagen Keluar</h3>
-                            </div>
-                        </div>
                         <div class="grafik-item">
+                            <div class="filters">
+                                <select name="Tahun" id="year">
+                                    <option value="Tahun">Tahun</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                                <button onclick="applyFilter()">Filter</button>
+                                <button onclick="resetFilter()">Reset</button>
+                                <script>
+                                    function applyFilter() {
+                                        const yearSelect = document.getElementById('year');
+                                        const selectedYear = yearSelect.value;
+                                        if (selectedYear !== 'Tahun') {
+                                            fetchChartData(selectedYear);
+                                        }
+                                    }
+
+                                    function resetFilter() {
+                                        const yearSelect = document.getElementById('year');
+                                        yearSelect.value = 'Tahun';
+                                        fetchChartData(new Date().getFullYear()); // Reset to the current year
+                                    }
+                                </script>
+                            </div>
                             <h3>Grafik Permintaan</h3>
                             <canvas id="permintaan"></canvas>
-                          </div>
+                        </div>
                           <div class="grafik-item">
-                            <h3>Diagram Jumlah Reagen</h3>
-                            <canvas id="grafik"></canvas>
+                            <h3>Diagram Jumlah Reagen & ATK</h3>
+                            <canvas id="diagram"></canvas>
                           </div>
                     </div>
                 </section>
@@ -141,44 +172,46 @@
                     </div>
                 </section>
                 <section id="tamu">
-                    <span class="teks">E-Tamu</span>
-                    <div class="wrapper">
-                        <div class="e-tamu">
-                            <div class="grafik-item">
-                                <h3>Pengujian Barang Narkoba</h3>
-                                <canvas id="narkoba"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Pengujian Obat & Makanan</h3>
-                                <canvas id="pom"></canvas>
-                            </div> 
-                            <div class="grafik-item">
-                                <h3>Informasi & Pengaduan</h3>
-                                <canvas id="pengaduan"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Sertifikasi</h3>
-                                <canvas id="sertif"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Wajib Lapor</h3>
-                                <canvas id="lapor"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Kunjungan</h3>
-                                <canvas id="kunjungan"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Keperluan Pribadi</h3>
-                                <canvas id="pribadi"></canvas>
-                            </div>
-                            <div class="grafik-item">
-                                <h3>Keperluan Lain</h3>
-                                <canvas id="lain"></canvas>
-                            </div>
-                        </div>
+    <span class="teks">E-Tamu</span>
+    <div class="wrapper">
+        <div class="e-tamu">
+            <div class="grafik-item-tamu">
+                <div class="filter">
+                    <div class="bulan">
+                        <select name="bulan" id="bulan">
+                            <option value="Pilih">--Pilih Bulan--</option>
+                            <option value="January">Januari</option>
+                            <option value="February">Februari</option>
+                            <option value="March">Maret</option>
+                            <option value="April">April</option>
+                            <option value="May">Mei</option>
+                            <option value="June">Juni</option>
+                            <option value="July">July</option>
+                            <option value="August">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="October">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="December">Desember</option>
+                        </select>
                     </div>
-                </section>
+                    <div class="tahun">
+                        <select name="tahun" id="tahun">
+                            <option value="Pilih">--Pilih Tahun--</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <button onclick="Filtering()">Filter</button>
+                    <button onclick="Resetting()">Reset</button>
+                </div>
+                <h3>Jumlah Pengunjung </h3>
+                <canvas id="guestPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
                 <section id="kepegawaian">
                     <span class="teks">Kepegawaian</span>
                     <div class="wrapper">

@@ -43,7 +43,7 @@ body{
      overflow-x: hidden;
      scrollbar-width: none;
 }
-#sidebar::--webkit-scrollbar {
+#sidebar::state(webkit-scrollbar) {
      display: none;
 }
 #sidebar.hide {
@@ -232,6 +232,13 @@ body{
      box-sizing: border-box;
  }
 
+ #percepat span{
+    font-family: var(--poppins);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 40px 0;
+}
+
  #percepat .wrapper {
      display: flex;
      flex-direction: row;
@@ -248,52 +255,57 @@ body{
      box-sizing: border-box;
  }
 
- .summary {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     align-items: center;
-     justify-content: space-between;
-     gap: 20px;
- }
-
  .summary-item {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-     max-width: 200px; 
-     text-align: center;
-     padding: 10px;
-     box-sizing: border-box;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-     background-color: var(--light);
-     border-radius: 10px;
- }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px; /* Optional: Control the maximum width of summary items */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: var(--light);
+    border-radius: 10px;
+}
 
- .summary-item h3{
-     font-family: var(--poppins);
-     font-size: 12px;
-     font-weight: 600;
- }
+.summary-item h3{
+    font-family: var(--poppins);
+    font-size: 12px;
+    font-weight: 600;
+}
 
- .summary-item p {
-     font-family: var(--poppins);
-     font-size: 25px;
-     margin: auto;
- }
- .summary-item img {
-     width: 50px;
-     height: 50px;
-     margin-bottom: 10px;
- }
+.summary-item p {
+    font-family: var(--poppins);
+    font-size: 15px;
+    margin: auto;
+}
+.summary-item img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.atk{
+    margin: auto;
+    padding: 10px;
+}
+.reagen{
+    margin: auto;
+    padding: 10px;
+}
 
  .grafik-item {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
+     height: 50%;
      width: 100%;
      text-align: center;
      box-sizing: border-box;
@@ -311,12 +323,39 @@ body{
      height: auto;
      max-width: 500px; 
  }
- #percepat span{
-     font-family: var(--poppins);
-     font-size: 24px;
-     font-weight: 700;
-     margin: 60px 0;
- }
+
+#percepat .filters{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 30px 0;
+    float: left;
+    gap: 10px;
+}
+.filters select{
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 6px;
+    color: #555;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.filters button{
+    background-color: var(--light);
+    color: var(--blue);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.filters button:hover{
+    background-color: var(--green);
+    color: var(--light);
+}
+ 
  /* PERCEPAT */
  /* SIMANTAN */
  #simantan {
@@ -408,6 +447,40 @@ body{
      width: 100%;
      gap: 20px;
      }
+     .grafik-item-tamu{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 50%;
+     width: 60%;
+     text-align: center;
+     box-sizing: border-box;
+     background-color: var(--light);
+     border-radius: 10px;
+     padding: 10px;
+     margin: 0 auto;
+     }
+     .grafik-item-tamu h3 {
+        font-family: var(--poppins);
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+   
+    .grafik-item-tamu canvas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        max-width: 250px;
+    }
+    #guestPieChart{
+        width: 100px;
+        height: 150px;
+    }
      .e-tamu{
      display: flex;
      flex-direction: row;
@@ -417,6 +490,37 @@ body{
      gap: 20px;
      width: 100%;
      }
+     .filter{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 20px 10px;
+     }
+     .filter select{
+        margin: 5px;
+        padding: 8px;
+        font-size: 13px;
+        border-radius: 6px;
+        color: #555;
+        outline: none;
+        transition: all 0.3s ease;
+     }
+     .filter button{
+        margin: 5px;
+        background-color: var(--light);
+        color: var(--blue);
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: bold;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .filter button:hover{
+        background-color: var(--green);
+        color: var(--light);
+    }
  /* ETAMU */
  /* KEPEGAWAIAN */
      #kepegawaian{
