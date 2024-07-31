@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Data Labels -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 </head>
 <body>
@@ -95,6 +97,7 @@
                     
                     <div class="wrapper">
                             <div class="summary-item">
+                                <h3 style="margin-bottom: 10px;">Jumlah Realtime</h3>
                                 <i class='bx bxs-data' style="width: 180px; margin-bottom: 10px; color:#D32F2E; "></i>
                                 <div class="wrap">
                                     <div class="atk">
@@ -108,8 +111,9 @@
                                 </div>
                             </div>
                         <div class="grafik-item">
+                            <h3>Grafik Permintaan</h3>
                             <div class="filters">
-                                <select name="Tahun" id="year">
+                                <select onchange="applyFilter()" name="Tahun" id="year">
                                     <option value="Tahun">Tahun</option>
                                     <option value="2020">2020</option>
                                     <option value="2021">2021</option>
@@ -117,7 +121,6 @@
                                     <option value="2023">2023</option>
                                     <option value="2024">2024</option>
                                 </select>
-                                <button onclick="applyFilter()">Filter</button>
                                 <button onclick="resetFilter()">Reset</button>
                                 <script>
                                     function applyFilter() {
@@ -135,7 +138,6 @@
                                     }
                                 </script>
                             </div>
-                            <h3>Grafik Permintaan</h3>
                             <canvas id="permintaan"></canvas>
                         </div>
                           <div class="grafik-item">
@@ -178,7 +180,7 @@
             <div class="grafik-item-tamu">
                 <div class="filter">
                     <div class="bulan">
-                        <select name="bulan" id="bulan">
+                        <select onchange="Filtering()" name="bulan" id="bulan">
                             <option value="Pilih">--Pilih Bulan--</option>
                             <option value="January">Januari</option>
                             <option value="February">Februari</option>
@@ -195,7 +197,7 @@
                         </select>
                     </div>
                     <div class="tahun">
-                        <select name="tahun" id="tahun">
+                        <select onchange="Filtering()" name="tahun" id="tahun">
                             <option value="Pilih">--Pilih Tahun--</option>
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>
@@ -203,7 +205,6 @@
                             <option value="2024">2024</option>
                         </select>
                     </div>
-                    <button onclick="Filtering()">Filter</button>
                     <button onclick="Resetting()">Reset</button>
                 </div>
                 <h3>Jumlah Pengunjung </h3>
