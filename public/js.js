@@ -369,7 +369,7 @@ function Filtering() {
 }
 
 function Resetting() {
-    document.getElementById('tahun').value = 'Pilih';
+    document.getElementById('tahun').value = new Date().getFullYear();
     document.getElementById('bulan').value = 'Pilih';
     if (chart) {
         // chart.destroy();

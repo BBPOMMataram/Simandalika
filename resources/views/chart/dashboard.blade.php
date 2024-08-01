@@ -67,26 +67,57 @@
         <section id="content">
             <!-- NAV -->
                 <nav>
-                    <i class='bx bx-menu' ></i>
+                    <i class='bx bx-menu'></i>
                     <a href="#" class="tittle">
-                        <i class='bx bx-bullseye'></i>
-                        <span class="text">Dashboard Overview</span>
+                        <i class='bx bx-bullseye' style="margin-left: 10px;"></i>
+                        <span class="text">SIMANDALIKA</span>
                     </a>
-                    <img src="/images/IMG/Group 16.png" alt="" width="25px" style="cursor: pointer;" onclick="openpopup()">
+                    <ul>
+                        <li>
+
+                        </li>
+                    </ul>
+                    <img src="/images/IMG/Group 16.png" width="25px" style="cursor: pointer;" class="popup-btn" onclick="toggleDropdown()">
                       <!-- POPUP -->
                         <div class="popup" id="popup">
-                            <p>Apa Anda Yakin Ingin Logout </p>
-                            <a href="index.html" onclick="closepopup()">Iya</a>
-                            <a href="#" onclick="closepopup()">Tidak</a>
+                            <a href="#">Edit Profile</a>
+                            <a onclick="openpopup()">Logout</a>
+                                <!-- <div class="overlay" id="overlay">
+                                    <p>Apa Anda Yakin Ingin Logout </p>
+                                    <a href="index.html" onclick="closepopup()">Iya</a>
+                                    <a href="#" onclick="closepopup()">Tidak</a>
+                                </div> -->
+                            
                         </div>
                         <script>
-                            const popup = document.getElementById("popup")
-                            function openpopup() {
-                                popup.classList.add("open-popup");   
-                            }
-                            function closepopup() {
-                                popup.classList.remove("open-popup");   
-                            }
+                               function toggleDropdown() {
+                                    const dropdown = document.getElementById("popup");
+                                    if (dropdown.style.display === "block") {
+                                        dropdown.style.display = "none";
+                                    } else {
+                                        dropdown.style.display = "block";
+                                    }
+                                }
+
+                                window.onclick = function(event) {
+                                    if (!event.target.matches('.popup-btn')) {
+                                        const dropdowns = document.getElementsByClassName("popup");
+                                        for (let i = 0; i < dropdowns.length; i++) {
+                                            const openDropdown = dropdowns[i];
+                                            if (openDropdown.style.display === "block") {
+                                                openDropdown.style.display = "none";
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // const popup = document.getElementById("overlay")
+                                // function openpopup() {
+                                //     popup.classList.add("open-popup");   
+                                // }
+                                // function closepopup() {
+                                //     popup.classList.remove("open-popup");   
+                                // }
                         </script>
                       <!-- POPUP -->-
                 </nav>
@@ -111,7 +142,7 @@
                                 </div>
                             </div>
                         <div class="grafik-item">
-                            <h3>Grafik Permintaan</h3>
+                        <h3>Grafik Permintaan</h3>
                             <div class="filters">
                                 <select onchange="applyFilter()" name="Tahun" id="year">
                                     <option value="Tahun">Tahun</option>
@@ -133,7 +164,7 @@
 
                                     function resetFilter() {
                                         const yearSelect = document.getElementById('year');
-                                        yearSelect.value = 'Tahun';
+                                        yearSelect.value = new Date().getFullYear() ;
                                         fetchChartData(new Date().getFullYear()); // Reset to the current year
                                     }
                                 </script>

@@ -137,6 +137,28 @@ body{
  }
 
  #content .popup{
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: var(--light);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+  
+}
+#content .popup a{
+    color: var(--dark);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#content .popup a:hover{
+    background-color: var(--blue);
+    color: var(--light);
+}
+#content .overlay{
     display: block;
     width: 30%;
     height: auto;
@@ -144,7 +166,7 @@ body{
     border-radius: 10px;
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 20%;
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
     padding: 0 20px 30px;
@@ -152,7 +174,7 @@ body{
     transition: transform 0.4s, visibility 0.4s;
     margin-top: 120px;
 }
-#content .popup a{
+#content .overlay a{
     padding: 10px;
     background-color: var(--light);
     border: solid 2px;
@@ -162,11 +184,11 @@ body{
     font-size: 10px;
     font-family: var(--poppins);
 }
-#content .popup a:hover{
+#content .overlay a:hover{
     background-color: var(--blue);
     color: var(--light);
 }
-#content .popup p{
+#content .overlay p{
     margin: 20px 0;
     line-height: 15pt;
     font-size: 12px;
