@@ -177,16 +177,41 @@ async function fetchChartData(year) {
                     }
                 }
             });
-        }
+        } 
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const yearSelect = document.getElementById('year');
+    const currentYear = new Date().getFullYear();
+
+    // Check if the current year is already in the options
+    let yearExists = false;
+    for (let i = 0; i < yearSelect.options.length; i++) {
+        if (parseInt(yearSelect.options[i].value) === currentYear) {
+            yearExists = true;
+            break;
+        }
+    }
+
+    // Add the current year if it doesn't exist in the options
+    if (!yearExists) {
+        const option = document.createElement('option');
+        option.value = currentYear;
+        option.text = currentYear;
+        yearSelect.appendChild(option);
+    }
+
+    // Set the default value to the current year
+    yearSelect.value = currentYear;
+    fetchChartData(currentYear); // Load data for the current year
+});
 
 
 
-window.onload = () => fetchChartData(2024);
+// window.onload = () => fetchChartData(2024);
 
 // ED
 document.addEventListener("DOMContentLoaded", function () {
@@ -360,6 +385,7 @@ async function updateChart(year, month) {
     });
 }
 
+
 function Filtering() {
     const year = document.getElementById('tahun').value;
     const month = document.getElementById('bulan').value !== 'Pilih' ? document.getElementById('bulan').value : null;
@@ -373,12 +399,12 @@ function Resetting() {
     document.getElementById('bulan').value = 'Pilih';
     if (chart) {
         // chart.destroy();
-        updateChart('2023', '');
+        updateChart('2024', '');
     }
 }
 
 // Inisialisasi chart dengan data default
-updateChart('2023', null);
+updateChart('2024', null);
 
 // Bind filter buttons
 document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
