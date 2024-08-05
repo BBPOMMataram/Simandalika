@@ -80,7 +80,7 @@
                     <img src="/images/IMG/Group 16.png" width="25px" style="cursor: pointer;" class="popup-btn" onclick="toggleDropdown()">
                       <!-- POPUP -->
                         <div class="popup" id="popup">
-                            <a href="#">Edit Profile</a>
+                            <a href="#">Edit Profile</a> 
                             <a onclick="openpopup()">Logout</a>
                                 <!-- <div class="overlay" id="overlay">
                                     <p>Apa Anda Yakin Ingin Logout </p>
@@ -206,35 +206,40 @@
                 </section>
                 <section id="tamu">
     <span class="teks">E-Tamu</span>
-    <div class="wrapper">
-        <div class="e-tamu">
-            <div class="grafik-item-tamu">
-                <div class="filter">
-                    <div class="bulan">
-                        <select onchange="Filtering()" name="bulan" id="bulan">
-                            <option value="Pilih">--Pilih Bulan--</option>
-                            <option value="January">Januari</option>
-                            <option value="February">Februari</option>
-                            <option value="March">Maret</option>
-                            <option value="April">April</option>
-                            <option value="May">Mei</option>
-                            <option value="June">Juni</option>
-                            <option value="July">July</option>
-                            <option value="August">Agustus</option>
-                            <option value="September">September</option>
-                            <option value="October">Oktober</option>
-                            <option value="November">November</option>
-                            <option value="December">Desember</option>
-                        </select>
-                    </div>
-                    <div class="tahun">
-                        <select onchange="Filtering()" name="tahun" id="tahun">
-                            <option value="Pilih">--Pilih Tahun--</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
+    <?php 
+$bulan_sekarang = Date('n'); // Mengambil bulan saat ini dalam format numerik (1-12)
+$tahun_sekarang = Date('Y');
+?>
+
+<div class="wrapper">
+    <div class="e-tamu">
+        <div class="grafik-item-tamu">
+            <div class="filter">
+                <div class="bulan">
+                    <select onchange="Filtering()" name="bulan" id="bulan">
+                        <option value="Pilih">--Pilih Bulan--</option>
+                        <option value="January" <?php if($bulan_sekarang == 1) echo 'selected'; ?>>Januari</option>
+                        <option value="February" <?php if($bulan_sekarang == 2) echo 'selected'; ?>>Februari</option>
+                        <option value="March" <?php if($bulan_sekarang == 3) echo 'selected'; ?>>Maret</option>
+                        <option value="April" <?php if($bulan_sekarang == 4) echo 'selected'; ?>>April</option>
+                        <option value="May" <?php if($bulan_sekarang == 5) echo 'selected'; ?>>Mei</option>
+                        <option value="June" <?php if($bulan_sekarang == 6) echo 'selected'; ?>>Juni</option>
+                        <option value="July" <?php if($bulan_sekarang == 7) echo 'selected'; ?>>Juli</option>
+                        <option value="August" <?php if($bulan_sekarang == 8) echo 'selected'; ?>>Agustus</option>
+                        <option value="September" <?php if($bulan_sekarang == 9) echo 'selected'; ?>>September</option>
+                        <option value="October" <?php if($bulan_sekarang == 10) echo 'selected'; ?>>Oktober</option>
+                        <option value="November" <?php if($bulan_sekarang == 11) echo 'selected'; ?>>November</option>
+                        <option value="December" <?php if($bulan_sekarang == 12) echo 'selected'; ?>>Desember</option>
+                    </select>
+                </div>
+                <div class="tahun">
+                    <select name="tahun" id="tahun">
+                        <option value="Pilih">--Pilih Tahun--</option>
+                        <option value="2021" <?php if($tahun_sekarang == 2021) echo 'selected'; ?>>2021</option>
+                        <option value="2022" <?php if($tahun_sekarang == 2022) echo 'selected'; ?>>2022</option>
+                        <option value="2023" <?php if($tahun_sekarang == 2023) echo 'selected'; ?>>2023</option>
+                        <option value="2024" <?php if($tahun_sekarang == 2024) echo 'selected'; ?>>2024</option>
+                    </select>
                     </div>
                     <button onclick="Resetting()">Reset</button>
                 </div>
