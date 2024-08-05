@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data: {
                     labels: ['Total Item', 'Item Expired '],
                     datasets: [{
-                        label: 'Jumlah Reagen & ATK',
+                        label: 'Jumlah Reagen',
                         data: [total, expired],
                         backgroundColor: [
                             '#059212',

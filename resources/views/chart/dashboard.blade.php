@@ -21,7 +21,7 @@
 
       <!-- Sidebar -->
         <section id="sidebar">
-            <img src="/images/IMG/Group 10.png" alt="" class="head" style=" cursor: pointer; width: 120px; margin-top: 20px; margin-left: 60px;">
+            <img src="/images/IMG/Group 100.png" alt="" class="head" style=" cursor: pointer; width: 120px; margin-top: 30px; margin-left: 60px;">
             <ul class="sidebar-menu">
                 <li class="active">
                     <a href="#percepat">
@@ -272,7 +272,7 @@ $tahun_sekarang = Date('Y');
                     </div>
                 </section>
                 <section id="pengujian">
-                    <span class="teks">Pengujian Sampel PK3</span>
+                    <span class="teks">SIJELAPP</span>
                     <div class="wrapper">
                         <div class="pengujian">
                         <div class="grafik-item">
