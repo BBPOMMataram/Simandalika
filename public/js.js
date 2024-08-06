@@ -377,7 +377,7 @@ async function updateChart(year, month) {
             },
             layout: {
                 padding: {
-                    bottom: 20
+                    bottom: 80
                 }
             }
         },
