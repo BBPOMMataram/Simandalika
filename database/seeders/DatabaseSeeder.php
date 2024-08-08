@@ -15,9 +15,21 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        for ($i=0; $i < 15; $i++) { 
+            User::factory()->create([
+                'name' => 'Test User ' . $i,
+                'email' => 'test'.$i.'@example.com',
+            ]);
+        }
+
+        
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+        ]);
+
+        $this->call([
+            ArsipSeeder::class,
         ]);
     }
 }
