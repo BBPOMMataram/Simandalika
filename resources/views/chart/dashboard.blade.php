@@ -172,7 +172,7 @@
                             <canvas id="permintaan"></canvas>
                         </div>
                           <div class="grafik-item">
-                            <h3>Diagram Jumlah Reagen & ATK</h3>
+                            <h3>Diagram Jumlah Reagen</h3>
                             <canvas id="diagram"></canvas>
                           </div>
                     </div>
