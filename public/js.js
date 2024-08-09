@@ -59,7 +59,7 @@ async function fetchChartData() {
         return data;
     } catch (error) {
         console.error('Error fetching data:', error);
-        return []; // Return empty array on error
+        return []; 
     }
 }
 
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearSelect = document.getElementById('year');
     const currentYear = new Date().getFullYear();
 
-    // Check if the current year is already in the options
+ 
     let yearExists = false;
     for (let i = 0; i < yearSelect.options.length; i++) {
         if (parseInt(yearSelect.options[i].value) === currentYear) {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Add the current year if it doesn't exist in the options
+
     if (!yearExists) {
         const option = document.createElement('option');
         option.value = currentYear;
@@ -204,9 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSelect.appendChild(option);
     }
 
-    // Set the default value to the current year
+
     yearSelect.value = currentYear;
-    fetchChartData(currentYear); // Load data for the current year
+    fetchChartData(currentYear); 
 });
 
 
@@ -403,11 +403,102 @@ function Resetting() {
     }
 }
 
-// Inisialisasi chart dengan data default
+
 updateChart('2024', null);
 
-// Bind filter buttons
-document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
-document.querySelector('button[onclick="Resetting()"]').addEventListener('click', Resetting);
 
-   
+// document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
+// document.querySelector('button[onclick="Resetting()"]').addEventListener('click', Resetting);
+
+// Siproval
+
+// alert('hii')
+// fetch('https://siproval.bbpommataram.id/api/capaian-lakin')
+// .then(res => res.json())
+// .then(res => console.log('tesss: ',res))
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const apiUrl = 'https://siproval.bbpommataram.id/api/capaian-lakin';
+    let chart = null;
+
+    async function fetchData(bulan = '') {
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log('Data fetched:', data);
+
+            const capaianData = data.data.map(indikator => ({
+                indikator: indikator.indikator,
+                capaian: bulan && bulan !== 'Pilih' ? indikator.capaian_perbulan[bulan]?.capaian || 0 : 0
+            }));
+            console.log('Processed data:', capaianData);
+            return capaianData;
+        } catch (error) {
+            console.error('Failed to fetch data:', error);
+            return [];
+        }
+    }
+
+    function createChart(labels, data) {
+        console.log('Chart labels:', labels);
+        console.log('Chart data:', data);
+        
+        if (!window.Chart) {
+            console.error('Chart.js library is not available');
+            return;
+        }
+
+        const ctx = document.getElementById('siproval').getContext('2d');
+
+      
+        if (chart) {
+            chart.destroy();
+        }
+
+        try {
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Capaian',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Failed to create chart:', error);
+        }
+    }
+
+    async function applyFilter() {
+        const bulan = document.getElementById('month').value;
+        const data = await fetchData(bulan);
+        const labels = data.map(item => item.indikator);
+        const values = data.map(item => item.capaian);
+        createChart(labels, values);
+    }
+
+    function resetFilter() {
+        document.getElementById('month').value = 'Pilih';
+        applyFilter();
+    }
+
+
+    applyFilter();
+});
