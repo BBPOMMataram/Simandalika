@@ -207,7 +207,7 @@
                 <section id="tamu">
     <span class="teks">E-Tamu</span>
     <?php 
-$bulan_sekarang = Date('n'); // Mengambil bulan saat ini dalam format numerik (1-12)
+$bulan_sekarang = Date('n'); 
 $tahun_sekarang = Date('Y');
 ?>
 
