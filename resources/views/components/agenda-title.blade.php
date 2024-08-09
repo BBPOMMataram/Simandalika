@@ -1,7 +1,7 @@
 <style>
     /* From Uiverse.io by WhiteNervosa */ 
 button#simandalika {
-  font-size: 28px;
+  font-size: 24px;
   color: #e1e1e1;
   font-family: inherit;
   font-weight: 800;
@@ -42,5 +42,5 @@ button#simandalika:after {
 </style>
 
 <button id="simandalika">
-    AGENDA BBPOM DI MATARAM
+    AGENDA KEGIATAN BALAI BESAR POM DI MATARAM
 </button>

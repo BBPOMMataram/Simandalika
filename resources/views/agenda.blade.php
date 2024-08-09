@@ -25,24 +25,73 @@
     <div class="bg-black bg-opacity-80 py-1 text-center overflow-hidden whitespace-nowrap box-border">
     </div>
 
-    <main class="container mx-auto flex flex-wrap justify-center p-8 flex-1">
-
-        <x-card title="Percepat" link="https://percepat.bbpommataram.id"
-            desc="Percepat adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, animi?" />
-
-        <x-card title="E Tamu" link="https://e-tamu.bbpommataram.id"
-            desc="E Tamu adalah dolor nulla excepturi quisquam necessitatibus tenetur cum nemo perspiciatis officia sunt nobis culpa, fugiat, aliquid quam optio!" />
-
-        <x-card title="Si Proval" link="https://siproval.bbpommataram.id"
-            desc="Si Proval adalah dolor nulla excepturi quisquam necessitatibus tenetur cum nemo perspiciatis aliquid quam optio!" />
-
-        <x-card title="Si Mantan" link="https://simantan.bbpommataram.id"
-            desc="Si Mantan adalah excepturi quisquam necessitatibus tenetur cum nemo perspiciatis aliquid quam optio!" />
-
-        <x-card title="Si Jelapp" link="https://sijelapp.bbpommataram.id"
-            desc="Si Jelapp adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. excepturi quisquam necessitatibus tenetur cum nemo perspiciatis aliquid quam optio!" />
-
+    <main class="mx-10 my-10">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <table class="table-auto w-full text-left text-gray-200">
+                <thead class="bg-gray-700">
+                    <tr>
+                        <th class="px-4 py-2 border-b-2 border-gray-600">No</th>
+                        <th class="px-4 py-2 border-b-2 border-gray-600">Tanggal</th>
+                        <th class="px-4 py-2 border-b-2 border-gray-600">Kegiatan</th>
+                        <th class="px-4 py-2 border-b-2 border-gray-600">Tempat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">1</td>
+                        <td class="px-4 py-2 border-b border-gray-600">4 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">jj</td>
+                        <td class="px-4 py-2 border-b border-gray-600">mall</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
+                        <td class="px-4 py-2 border-b border-gray-600">2</td>
+                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
+                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
+                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
     </main>
+    
+    
     <footer class="bg-black bg-opacity-70 text-center py-4 text-white">
         <p>&copy; 2024 BBPOM di Mataram. All rights reserved.</p>
     </footer>
