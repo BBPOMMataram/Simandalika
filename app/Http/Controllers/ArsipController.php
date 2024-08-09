@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arsip;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ArsipController extends Controller
@@ -53,6 +54,12 @@ class ArsipController extends Controller
         ]);
 
         return redirect()->back()->with(['arsip' => ['msg' => 'berhasil update data', 'status' => 1]]);
+    }
+
+    function arsip_surat() : JsonResponse {
+        $data = Arsip::all();
+        
+        return response()->json($data);
     }
 
 }

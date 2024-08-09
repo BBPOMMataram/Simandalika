@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ArsipController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
     Route::get('arsip', [ArsipController::class, 'edit'])->name('arsip.form');
     Route::put('arsip', [ArsipController::class, 'update'])->name('arsip.update');
+    Route::get('arsip-surat', [ArsipController::class, 'arsip_surat'])->name('arsip.surat');
 });
 
 Route::middleware('auth')->group(function () {
@@ -29,15 +32,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/dashboard', function(){
-    return view('chart.dashboard');
-})->name('dashboard');
-
-Route::get('testing', function(){
-
-    return view('testing');
-});
-
-Route::get('api/users', function() {
-    return User::paginate(3);
-});
+Route::get('/dashboard', DashboardController::class)->name('dashboard');
+Route::get('agenda', AgendaController::class)->name('agenda');

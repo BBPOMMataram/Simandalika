@@ -1,25 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // For Sidebar
-const allSideMenu = document.querySelectorAll('#sidebar .sidebar-menu li a');
+    const allSideMenu = document.querySelectorAll('#sidebar .sidebar-menu li a');
 
-allSideMenu.forEach(item=> {
-const li = item.parentElement;
+    allSideMenu.forEach(item => {
+        const li = item.parentElement;
 
-item.addEventListener('click', function () {
-    allSideMenu.forEach(i=> {
-        i.parentElement.classList.remove('active');
+        item.addEventListener('click', function () {
+            allSideMenu.forEach(i => {
+                i.parentElement.classList.remove('active');
+            })
+            li.classList.add('active');
+        })
+    });
+
+    // For Toggle
+    const menuBar = document.querySelector('#content nav .bx.bx-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBar.addEventListener('click', function () {
+        sidebar.classList.toggle('hide');
     })
-    li.classList.add('active');
-})
-});
-
-// For Toggle
-const menuBar = document.querySelector('#content nav .bx.bx-menu');
-const sidebar = document.getElementById('sidebar');
-
-menuBar.addEventListener('click', function () {
-    sidebar.classList.toggle('hide');
-})
 
 });
 
@@ -28,9 +28,9 @@ menuBar.addEventListener('click', function () {
 // Score Stok
 
 // script.js
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = "https://percepat-api.bbpommataram.id/api/barang";
-    
+
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -54,7 +54,7 @@ async function fetchChartData() {
     try {
         const response = await fetch('https://percepat-api.bbpommataram.id/api/barang');
         const data = await response.json();
-        
+
         console.log('Data from API:', data);
         return data;
     } catch (error) {
@@ -77,7 +77,7 @@ async function createChart() {
     const atk = parsedData.filter(item => item.data && item.data.total && item.data.total.atk === 'ATK').length;
 
 
-    
+
     const ctx = document.getElementById('diagram').getContext('2d');
     new Chart(ctx, {
         type: 'pie',
@@ -115,7 +115,7 @@ async function fetchChartData(year) {
         const data = await response.json();
 
 
-        console.log('Data from API:', data);
+        // console.log('Data from API:', data);
 
 
         if (!data.reagen) {
@@ -132,9 +132,9 @@ async function fetchChartData(year) {
         const jumlahRealisasi = reagenData.map(item => item.jumlah_realisasi);
 
 
-        console.log('Labels:', labels);
-        console.log('Jumlah Permintaan:', jumlahPermintaan);
-        console.log('Jumlah Realisasi:', jumlahRealisasi);
+        // console.log('Labels:', labels);
+        // console.log('Jumlah Permintaan:', jumlahPermintaan);
+        // console.log('Jumlah Realisasi:', jumlahRealisasi);
 
 
         const ctx = document.getElementById('permintaan').getContext('2d');
@@ -147,24 +147,24 @@ async function fetchChartData(year) {
             permintaanChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'Jumlah Permintaan',
-                                            data: jumlahPermintaan,
-                                            backgroundColor: '#0F67B1',
-                                            borderColor: '#0F67B1',
-                                            borderWidth: 1
-                                        },
-                                        {
-                                            label: 'Jumlah Realisasi',
-                                            data: jumlahRealisasi,
-                                            backgroundColor: '#059212',
-                                            borderColor: '#059212',
-                                            borderWidth: 1
-                                        }
-                                    ]
-                                },
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Jumlah Permintaan',
+                            data: jumlahPermintaan,
+                            backgroundColor: '#0F67B1',
+                            borderColor: '#0F67B1',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Jumlah Realisasi',
+                            data: jumlahRealisasi,
+                            backgroundColor: '#059212',
+                            borderColor: '#059212',
+                            borderWidth: 1
+                        }
+                    ]
+                },
                 options: {
                     responsive: true,
                     scales: {
@@ -172,12 +172,17 @@ async function fetchChartData(year) {
                             beginAtZero: true
                         },
                         y: {
-                            beginAtZero: true
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                              // forces step size to be 50 units
+                              stepSize: 10
+                            }
                         }
                     }
                 }
             });
-        } 
+        }
     } catch (error) {
         console.error('Error fetching data:', error);
     }
@@ -281,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //     const tahunSelect = document.getElementById('tahun');
 //     const bulanSelect = document.getElementById('bulan');
 //     const ctx = document.getElementById('guestPieChart').getContext('2d');
-    
+
 let chart;
 
 async function fetchGuestData(year, month) {
@@ -330,25 +335,25 @@ async function updateChart(year, month) {
                 label: 'Jumlah Pengunjung',
                 data: counts,
                 backgroundColor: [
-                                        '#D32F2E',
-                                        '#FF5F00',
-                                        '#FF9F00',
-                                        '#9BEC00',
-                                        '#059212',
-                                        '#006769',
-                                        '#0F67B1',
-                                        '#850F8D'
-                                    ],
-                                    borderColor: [
-                                       '#D32F2E',
-                                        '#FF5F00',
-                                        '#FF9F00',
-                                        '#9BEC00',
-                                        '#059212',
-                                        '#006769',
-                                        '#0F67B1',
-                                        '#850F8D'
-                                    ],
+                    '#D32F2E',
+                    '#FF5F00',
+                    '#FF9F00',
+                    '#9BEC00',
+                    '#059212',
+                    '#006769',
+                    '#0F67B1',
+                    '#850F8D'
+                ],
+                borderColor: [
+                    '#D32F2E',
+                    '#FF5F00',
+                    '#FF9F00',
+                    '#9BEC00',
+                    '#059212',
+                    '#006769',
+                    '#0F67B1',
+                    '#850F8D'
+                ],
                 borderWidth: 1
             }]
         },
@@ -410,4 +415,4 @@ updateChart('2024', null);
 document.querySelector('button[onclick="Filtering()"]').addEventListener('click', Filtering);
 document.querySelector('button[onclick="Resetting()"]').addEventListener('click', Resetting);
 
-   
+

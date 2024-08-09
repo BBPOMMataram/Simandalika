@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('tw');
             $table->string('jenis');
-            $table->tinyInteger('jumlah');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
