@@ -280,6 +280,97 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error fetching data:', error));
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const apiUrl = 'https://siproval.bbpommataram.id/api/capaian-lakin';
+    let chart = null;
+
+    async function fetchData(bulan = '') {
+        try {
+            const response = await fetch(apiUrl);
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
+            const capaianData = data.data.map(indikator => ({
+                indikator: indikator.indikator,
+                capaian: bulan && bulan !== 'Pilih' ? indikator.capaian_perbulan[bulan]?.capaian || 0 : 0
+            }));
+
+            return capaianData;
+        } catch (error) {
+            console.error('Failed to fetch data:', error);
+            return [];
+        }
+    }
+
+    function createChart(labels, data) {
+
+        if (!window.Chart) {
+            console.error('Chart.js library is not available');
+            return;
+        }
+
+        const ctx = document.getElementById('siproval').getContext('2d');
+
+
+        if (chart) {
+            chart.destroy();
+        }
+
+        try {
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Capaian',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Failed to create chart:', error);
+        }
+    }
+
+    async function applyFilter() {
+        const bulan = document.getElementById('month').value;
+        const data = await fetchData(bulan);
+        const labels = data.map(item => item.indikator);
+        const values = data.map(item => item.capaian);
+
+        console.log('data: ', data);
+        
+        createChart(labels, values);
+    }
+
+    function resetFilter() {
+        document.getElementById('month').value = 'Pilih';
+        applyFilter();
+    }
+
+
+    const month = document.querySelector('.siproval #month')
+    month.addEventListener('change', () =>{
+        applyFilter();
+    })
+
+    applyFilter();
+});
+
 // E-Tamu
 
 // document.addEventListener('DOMContentLoaded', function () {

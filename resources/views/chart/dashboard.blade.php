@@ -8,181 +8,56 @@
     <!-- Boxicon -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css.css">
+    {{-- <link rel="stylesheet" href="/css.css"> --}}
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Data Labels -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/css/dashboard-chart.css'])
 </head>
 
 <body>
-
-    <script src="/js.js"></script>
-
-
     <!-- Sidebar -->
-    <section id="sidebar">
-        <img src="/images/IMG/Group 100.png" alt="" class="head"
-            style=" cursor: pointer; width: 120px; margin-top: 30px; margin-left: 60px;">
-        <ul class="sidebar-menu">
-            <li class="active">
-                <a href="#percepat" class="sidebar-link">
-                    <i class='bx bxs-zap'></i>
-                    <span class="title">PERCEPAT</span>
-                </a>
-            </li>
-            <li>
-                <a href="#simantan" class="sidebar-link">
-                    <i class='bx bxs-cog'></i>
-                    <span class="title">SIMANTAN</span>
-                </a>
-            </li>
-            <li>
-                <a href="#tamu" class="sidebar-link">
-                    <i class='bx bx-fingerprint'></i>
-                    <span class="title">E-TAMU</span>
-                </a>
-            </li>
-            <li>
-                <a href="#kepegawaian" class="sidebar-link">
-                    <i class='bx bxs-network-chart'></i>
-                    <span class="title">Kepegawaian</span>
-                </a>
-            </li>
-            <li>
-                <a href="#kearsipan" class="sidebar-link">
-                    <i class='bx bx-book-alt'></i>
-                    <span class="title">Kearsipan</span>
-                </a>
-            </li>
-            <li>
-                <a href="#pengujian" class="sidebar-link">
-                    <i class='bx bx-atom'></i>
-                    <span class="title">Pengujian PK3</span>
-                </a>
-            </li>
-        </ul>
-
-    </section>
+    @include('chart.sidebar')
     <!-- End Sidebar -->
+
     <!-- Content -->
     <section id="content">
         <!-- NAV -->
-        <nav>
-            <i class='bx bx-menu'></i>
-            <a href="#" class="tittle">
-                <i class='bx bx-bullseye' style="margin-left: 10px;"></i>
-                <span class="text">SIMANDALIKA</span>
-            </a>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
-            <img src="/images/IMG/Group 16.png" width="25px" style="cursor: pointer;" class="popup-btn"
-                onclick="toggleDropdown()">
-            <!-- POPUP -->
-            <div class="popup" id="popup">
-                <a href="#">Edit Profile</a>
-                <a onclick="openpopup()">Logout</a>
-                <!-- <div class="overlay" id="overlay">
-                                    <p>Apa Anda Yakin Ingin Logout </p>
-                                    <a href="index.html" onclick="closepopup()">Iya</a>
-                                    <a href="#" onclick="closepopup()">Tidak</a>
-                                </div> -->
-
-            </div>
-            <script>
-                function toggleDropdown() {
-                    const dropdown = document.getElementById("popup");
-                    if (dropdown.style.display === "block") {
-                        dropdown.style.display = "none";
-                    } else {
-                        dropdown.style.display = "block";
-                    }
-                }
-
-                window.onclick = function(event) {
-                    if (!event.target.matches('.popup-btn')) {
-                        const dropdowns = document.getElementsByClassName("popup");
-                        for (let i = 0; i < dropdowns.length; i++) {
-                            const openDropdown = dropdowns[i];
-                            if (openDropdown.style.display === "block") {
-                                openDropdown.style.display = "none";
-                            }
-                        }
-                    }
-                }
-
-                // const popup = document.getElementById("overlay")
-                // function openpopup() {
-                //     popup.classList.add("open-popup");   
-                // }
-                // function closepopup() {
-                //     popup.classList.remove("open-popup");   
-                // }
-            </script>
-            <!-- POPUP -->-
-        </nav>
-        
+        @include('chart.nav')
         <!--END NAV -->
+
         <!-- MAIN -->
-        <section class="content-section" id="percepat">
-            <span class="teks">Percepat</span>
+        <section class="bg-white m-10 mt-24 rounded p-6" id="percepat">
+            <div class="flex flex-col items-center">
+                <h2 class="text-3xl font-bold">Percepat</h2>
+                <p class="mb-10">Persediaan Cepat & Tepat</p>
+            </div>
 
-            {{-- <div class="">
-                <h3>Grafik Permintaan</h3>
-                <div class="filters">
-                    <select onchange="applyFilter()" name="Tahun" id="year" class="w-16">
-                        <option value="Tahun">Tahun</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                    </select>
-                    <button onclick="resetFilter()">Reset</button>
-                    <script>
-                        function applyFilter() {
-                            const yearSelect = document.getElementById('year');
-                            const selectedYear = yearSelect.value;
-                            if (selectedYear !== 'Tahun') {
-                                fetchChartData(selectedYear);
-                            }
-                        }
-
-                        function resetFilter() {
-                            const yearSelect = document.getElementById('year');
-                            yearSelect.value = new Date().getFullYear();
-                            fetchChartData(new Date().getFullYear()); // Reset to the current year
-                        }
-                    </script>
-                </div>
-                <canvas id="permintaan"></canvas>
-            </div> --}}
-
-            <div class="wrapper">
-                <div class="summary-item">
-                    <h3 style="margin-bottom: 10px;">Jumlah Realtime</h3>
-                    <i class='bx bxs-data' style="width: 180px; margin-bottom: 10px; color:#D32F2E; "></i>
-                    <div class="wrap">
-                        <div class="atk">
-                            <p id="jmlatk">0</p>
+            <div class="flex justify-evenly flex-wrap gap-4">
+                <div class="bg-blue-200 text-black h-fit rounded pt-4 pb-6 px-8 font-bold text-center">
+                    <h3 class="mb-2 text-lg">Jumlah Realtime</h3>
+                    {{-- <i class="bx bxs-data text-4xl text-red-600 mb-2 animate-pulse"></i> --}}
+                    <div class="flex justify-between gap-2">
+                        <div class="bg-blue-500 p-2 rounded-full flex-1 w-24 h-24 flex flex-col justify-center">
                             <h3>ATK</h3>
+                            <p id="jmlatk" class="animate-pulse text-xl">0</p>
                         </div>
-                        <div class="reagen">
-                            <p id="jmlreagen">0</p>
+                        <div class="bg-blue-500 p-2 rounded-full flex-1 w-24 h-24 flex flex-col justify-center">
                             <h3>Reagen</h3>
+                            <p id="jmlreagen" class="animate-pulse text-xl">0</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="grafik-item">
-                    <h3>Data ED</h3>
+
+                <div class="bg-gray-200 text-center pt-6 px-6">
+                    <h3 class="font-bold mb-4">Data ED</h3>
                     <canvas id="diagram"></canvas>
                 </div>
-
-                <div class="bg-white mx-6 p-4 rounded">
+            </div>
+            <div class="flex">
+                <div class="bg-white mx-6 p-4 rounded w-full">
                     <h3 class="font-semibold">Grafik Permintaan</h3>
                     <div class="filters">
                         <select onchange="applyFilter()" name="Tahun" id="year" class="w-16">
@@ -212,7 +87,8 @@
                 </div>
             </div>
         </section>
-        <section class="content-section" id="simantan">
+
+        <section class="bg-white m-10 mt-24 rounded p-6" id="simantan">
             <span class="teks">SIMANTAN</span>
             <div class="wrapper">
                 <div class="simantan">
@@ -317,13 +193,31 @@
                 </div>
             </div>
         </section>
-        <section class="content-section" id="kepegawaian">
-            <span class="teks">Kepegawaian</span>
+        <section class="w-full max-w-full overflow-auto" id="siproval-container">
+            <h2 class="text-center font-bold text-xl">SIPROVAL</h2>
             <div class="wrapper">
-                <div class="pegawaian">
-                    <div class="grafik-item">
-                        <h3>Kepegawaian</h3>
-                        <canvas id="pegawai"></canvas>
+                <div class="siproval text-center">
+                    <div class="mx-10 bg-white w-full overflow-auto">
+                        <h3 class="my-4">Indikator Capaian Kinerja BBPOM Mataram perbulan</h3>
+                        <div class="filters">
+                            <select name="bulan" id="month" onchange="applyFilter()">
+                                <option value="Pilih">--Pilih Bulan--</option>
+                                <option value="Januari" {{ now()->month === 1 ? 'selected' : '' }}>Januari</option>
+                                <option value="Februari" {{ now()->month === 2 ? 'selected' : '' }}>Februari</option>
+                                <option value="Maret" {{ now()->month === 3 ? 'selected' : '' }}>Maret</option>
+                                <option value="April" {{ now()->month === 4 ? 'selected' : '' }}>April</option>
+                                <option value="Mei" {{ now()->month === 5 ? 'selected' : '' }}>Mei</option>
+                                <option value="Juni" {{ now()->month === 6 ? 'selected' : '' }}>Juni</option>
+                                <option value="Juli" {{ now()->month === 7 ? 'selected' : '' }}>Juli</option>
+                                <option value="Agustus" {{ now()->month === 8 ? 'selected' : '' }}>Agustus</option>
+                                <option value="September" {{ now()->month === 9 ? 'selected' : '' }}>September</option>
+                                <option value="Oktober" {{ now()->month === 10 ? 'selected' : '' }}>Oktober</option>
+                                <option value="November" {{ now()->month === 11 ? 'selected' : '' }}>November</option>
+                                <option value="Desember" {{ now()->month === 12 ? 'selected' : '' }}>Desember</option>
+                            </select>
+                            <button onclick="resetFilter()">Reset</button>
+                        </div>
+                        <canvas id="siproval" width="1000" height="1800"></canvas>
                     </div>
                 </div>
             </div>
