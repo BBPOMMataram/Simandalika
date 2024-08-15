@@ -48,7 +48,7 @@ class SiteController extends Controller
 
         $newData->save();
         // Menyimpan file gambar
-        if ($validated['logo']) {
+        if (isset($validated['logo'])) {
             // Mendapatkan file dari request
             $logo = $validated['logo'];
 
@@ -98,7 +98,7 @@ class SiteController extends Controller
         $site->desc = $validated['desc'];
         $site->pic = $validated['pic'];
 
-        if ($validated['logo']) {
+        if (isset($validated['logo'])) {
             // delete old logo if exist
             if ($site->logo_path) {
                 Storage::delete($site->logo_path);

@@ -13,7 +13,7 @@ class SiteSeeder extends Seeder
         Site::create([
             'name' => 'Percepat',
             'link' => 'https://percepat.bbpommataram.id',
-            'desc' => 'Persediaan cepat & tepat',
+            'desc' => 'Persediaan cepat dan tepat',
             'logo_path' => '',
             'pic' => 'KBKC'
         ]);
