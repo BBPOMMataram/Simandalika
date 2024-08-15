@@ -1,19 +1,23 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SitesController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('main');
-
+Route::get('/', FrontController::class)->name('main');
 
 Route::middleware('auth', 'verified')->group(function () {
+
+    Route::get('admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::resource('sites', SiteController::class);
 
     // Route::get('tamu', function () {
     //     return view('tamu');
@@ -32,5 +36,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+// Route::get('/dashboard', DashboardController::class)->name('dashboard');
 Route::get('agenda', AgendaController::class)->name('agenda');

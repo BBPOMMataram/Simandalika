@@ -13,16 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        for ($i=0; $i < 15; $i++) { 
-            User::factory()->create([
-                'name' => 'Test User ' . $i,
-                'email' => 'test'.$i.'@example.com',
-            ]);
-        }
-
-        
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
@@ -30,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             ArsipSeeder::class,
+            SiteSeeder::class,
         ]);
     }
 }
