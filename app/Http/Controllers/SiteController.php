@@ -134,4 +134,10 @@ class SiteController extends Controller
         return redirect()->route('sites.index')
             ->with('success', 'Data berhasil dihapus');
     }
+
+    function visit_link(Site $site) {
+        $site->increment('clicks');
+
+        return redirect($site->link);
+    }
 }

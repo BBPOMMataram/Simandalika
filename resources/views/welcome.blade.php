@@ -14,8 +14,7 @@
         <div class="inset-0 bg-black bg-opacity-70 flex items-center justify-center">
             <div class="text-center p-8">
                 <div class="mb-4">
-                    <img src="{{ asset('images/bpomri_without_label.png') }}" alt="Logo"
-                        class="w-24 h-auto mx-auto">
+                    <img src="{{ asset('images/bpomri_without_label.png') }}" alt="Logo" class="w-24 h-auto mx-auto">
                 </div>
                 {{-- <h1 class="text-4xl font-extrabold text-shadow">Selamat Datang di Balai Besar POM di Mataram</h1> --}}
                 <x-simandalika-title />
@@ -33,12 +32,9 @@
     <main class="container mx-auto flex flex-wrap justify-center p-8 flex-1">
 
         @foreach ($data as $site)
-            <x-card title='{{ $site->name }}' link="{{ $site->link }}"
-                desc="{{ $site->desc ?: '-' }}" 
-                logo="{{ $site->logo_path }}"
-                pic="{{ $site->pic }}"
-                clicks="{{ $site->clicks }}"
-                />
+            <x-card title='{{ $site->name }}' id="{{ $site->id }}" link="{{ $site->link }}"
+                desc="{{ $site->desc ?: '-' }}" logo="{{ $site->logo_path }}" pic="{{ $site->pic }}"
+                clicks="{{ $site->clicks }}" />
         @endforeach
 
     </main>

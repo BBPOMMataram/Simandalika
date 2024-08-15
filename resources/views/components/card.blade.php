@@ -7,10 +7,10 @@
         <div class='tokenInfo mt-auto'>
             <div class="price">
                 <ins>◘</ins>
-                <p>{{ $clicks ?: 0 }} clicks</p>
+                <p><span class="clicks">{{ $clicks ?: 0 }}</span> clicks</p>
             </div>
             <div class="duration">
-                <p class="hover:underline"><a target="_blank" href="{{ $link }}">visit</a></p>
+                <p class="hover:underline"><a class="visit" target="_blank" href="{{ route('visit-link', $id) }}">visit</a></p>
                 <ins>&#129133;</ins>
             </div>
         </div>
@@ -34,3 +34,24 @@
         </div>
     </div>
 </div>
+<script>
+    // Attach event listeners to all visit links
+    document.querySelectorAll('.visit').forEach(link => {
+        link.addEventListener('click', function(event) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+            // console.log(this.closest('.tokenInfo'));
+            
+            // Find the nearest card containing the click-count element
+            // const card = this.closest('.tokenInfo');
+            // let clickCountElement = card.querySelector('.clicks');
+            
+            // // Get the current click count, increment it, and update the element
+            // let currentCount = parseInt(clickCountElement.textContent);
+            // clickCountElement.textContent = currentCount + 1;
+
+            // No need to prevent default behavior; the link will open in a new tab
+        });
+    });
+</script>

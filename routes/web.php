@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', FrontController::class)->name('main');
+Route::get('/visit-link/{site}', [SiteController::class, 'visit_link'])->name('visit-link');
 
 Route::middleware('auth', 'verified')->group(function () {
 
