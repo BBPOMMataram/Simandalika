@@ -13,13 +13,13 @@
     <header class="text-center bg-cover bg-center">
         <div class="inset-0 bg-black bg-opacity-70 flex items-center justify-center">
             <div class="text-center p-8">
-                <div class="mb-4">
+                {{-- <div class="mb-4"> --}}
                     <img src="{{ asset('images/bpomri_without_label.png') }}" alt="Logo"
                         class="w-14 h-auto mx-auto">
-                </div>
+                {{-- </div> --}}
                 {{-- <h1 class="text-4xl font-extrabold text-shadow">Selamat Datang di Balai Besar POM di Mataram</h1> --}}
-                <x-agenda-title />
             </div>
+            <x-agenda-title />
         </div>
     </header>
     <div class="bg-black bg-opacity-80 py-1 text-center overflow-hidden whitespace-nowrap box-border">
@@ -37,54 +37,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($agenda as $item)
                     <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">1</td>
-                        <td class="px-4 py-2 border-b border-gray-600">4 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">jj</td>
-                        <td class="px-4 py-2 border-b border-gray-600">mall</td>
+                        <td class="px-4 py-2 border-b border-gray-600">{{ ++$loop->index }}</td>
+                        <td class="px-4 py-2 border-b border-gray-600 whitespace-nowrap">{{ $item->tanggal ? $item->tanggal->isoFormat('dddd, D MMMM YYYY') : '-' }}</td>
+                        <td class="px-4 py-2 border-b border-gray-600">{{ $item->kegiatan }}</td>
+                        <td class="px-4 py-2 border-b border-gray-600">{{ $item->tempat }}</td>
                     </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
-                    <tr class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-700">
-                        <td class="px-4 py-2 border-b border-gray-600">2</td>
-                        <td class="px-4 py-2 border-b border-gray-600">5 Des 2024</td>
-                        <td class="px-4 py-2 border-b border-gray-600">kk</td>
-                        <td class="px-4 py-2 border-b border-gray-600">plaza</td>
-                    </tr>
+                    @endforeach
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>

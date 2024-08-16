@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
+            $table->date('tanggal')->nullable();
             $table->string('kegiatan')->nullable()->default(null);
             $table->string('tempat')->nullable()->default(null);
             $table->timestamps();

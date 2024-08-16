@@ -27,6 +27,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('arsip', [ArsipController::class, 'edit'])->name('arsip.form');
     Route::put('arsip', [ArsipController::class, 'update'])->name('arsip.update');
     Route::get('arsip-surat', [ArsipController::class, 'arsip_surat'])->name('arsip.surat');
+
+    Route::get('import-agenda', [AgendaController::class, 'import_agenda'])->name('agenda.import');
 });
 
 Route::middleware('auth')->group(function () {
