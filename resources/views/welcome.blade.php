@@ -41,6 +41,7 @@
     <footer class="bg-black bg-opacity-70 text-center py-4 text-white">
         <p>&copy; 2024 BBPOM di Mataram. All rights reserved.</p>
     </footer>
+    <script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>
 </body>
 
 </html>
