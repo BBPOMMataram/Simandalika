@@ -2,8 +2,8 @@
     <div class='main h-full'>
         <img class='tokenImage' src="{{ $logo ? Storage::url($logo) : asset('images/bpomri_without_label.png') }}"
             alt="LOGO" />
-        <h2 class="text-2xl text-center mt-2">{{ $title }}</h2>
-        <p class='description'>{{ $desc }}</p>
+        <h2 class="text-2xl text-center mt-2 font-bold text-green-200">{{ $title }}</h2>
+        <p class='description text-center !text-blue-300'>{{ $desc }}</p>
         <div class='tokenInfo mt-auto'>
             <div class="price">
                 <ins>◘</ins>
@@ -30,7 +30,7 @@
                     </path>
                 </svg>
             </div>
-            <p><ins>PIC : </ins> {{ $pic }}</p>
+            <p><ins>PIC : </ins> <span class="text-green-50">{{ $pic }}</span></p>
         </div>
     </div>
 </div>

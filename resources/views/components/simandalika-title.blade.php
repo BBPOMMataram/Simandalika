@@ -2,7 +2,7 @@
     /* From Uiverse.io by WhiteNervosa */ 
 button#simandalika {
   font-size: 46px;
-  color: #e1e1e1;
+  color: #00C951;
   font-family: inherit;
   font-weight: 800;
   cursor: pointer;
@@ -17,7 +17,7 @@ button#simandalika {
 
 button#simandalika:focus,
 button#simandalika:hover {
-  color: #fff;
+  color: #2B7FFF;
 }
 
 button#simandalika:focus:after,
@@ -34,7 +34,7 @@ button#simandalika:after {
   position: absolute;
   width: 0%;
   height: 2px;
-  background-color: #fff;
+  background-color: #00C951;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 400ms;
   transition-property: width, left;
